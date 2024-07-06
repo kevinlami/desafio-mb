@@ -1,0 +1,13 @@
+body {
+  font-family: $font-family;
+  height: 100vh;
+
+  #app {
+    display: flex;
+    height: 100vh;
+  }
+
+  button {
+    background: transparent;
+  }
+}
