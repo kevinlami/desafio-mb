@@ -1,6 +1,25 @@
-# Vue 3 + Vite
+# Registration MB
 
-Comandos para rodar os projetos:
-server: start-server
-client: build
-both: build-and-serve
+## How to run
+
+The project uses noje.js to work.
+
+Commands to run the projects:
+
+server:
+
+```bash
+start-server
+```
+
+client:
+
+```bash
+build-client
+```
+
+both(recommended):
+
+```bash
+build-and-serve
+```
