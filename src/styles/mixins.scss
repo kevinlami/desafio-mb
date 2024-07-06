@@ -1,0 +1,11 @@
+@mixin error {
+  &.error {
+    .error-text {
+      color: $error-color;
+      margin-bottom: 10px;
+    }
+    input {
+      border-color: $error-color;
+    }
+  }
+}
