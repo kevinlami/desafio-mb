@@ -1,78 +1,77 @@
 <script setup>
 import { ref, provide, reactive, defineEmits } from "vue";
-import IdentityForm from "@/components/registration/IdentityForm.vue";
-import personalInformation from "@/components/registration/personalInformation.vue";
-import PasswordForm from "@/components/registration/PasswordForm.vue";
-import ReviewForm from "@/components/registration/ReviewForm.vue";
+import { FORMS_STRUCTURE } from "@/helpers/formStructure.js";
+import Form from "@/components/registration/Form.vue";
 const emit = defineEmits(["create:registrationData"]);
 
-const registrationData = reactive({});
+const formReview = reactive({
+  title: "Revise suas informações",
+  formFields: [],
+});
+const formSubmit = {};
 const steps = ref(1);
-const maxSteps = ref(4);
-const entity = ref("");
+const maxSteps = ref(FORMS_STRUCTURE.length + 1);
 
+/*
+Used to proceed to the next step.
+Add the data to the review form and the form submit with ID:value used in the submit.
+*/
 const handleNextStep = (formData) => {
-  if (steps.value === maxSteps.value) {
-    emit("create:registrationData", {
-      documentType: entity.value,
-      ...formData,
+  if (Array.isArray(formData?.formFields)) {
+    formData?.formFields.forEach((element) => {
+      formSubmit[element.id] = element.value;
+      if (element.review) {
+        formReview.formFields.push(element);
+      }
     });
   }
 
   if (steps.value < maxSteps.value) {
-    if (formData.entity?.value) {
-      entity.value = formData.entity?.value;
-      delete formData.entity;
-    }
-
-    Object.assign(registrationData, {
-      ...registrationData,
-      ...formData,
-    });
-
     steps.value++;
   }
 };
 
+/*
+Used to send the processed form data with ID:value to the registration
+*/
+const handleSubmitForm = () => {
+  console.log("formSubmit", formSubmit);
+  emit("create:registrationData", {
+    ...formSubmit,
+  });
+};
+
+/*
+Used to go back one step
+*/
 const handleBackStep = () => {
   if (steps.value > 1) {
     steps.value--;
   }
 };
 
-provide("entity", entity);
 provide("steps", steps);
 provide("maxSteps", maxSteps);
 </script>
 
 <template>
   <form class="steps-form">
-    <IdentityForm
-      v-show="steps === 1"
-      @handleBackStep="handleBackStep"
-      @handleNextStep="handleNextStep"
-    />
-
-    <personalInformation
-      v-show="steps === 2"
-      :key="entity"
-      @handleBackStep="handleBackStep"
-      @handleNextStep="handleNextStep"
-    />
-
-    <PasswordForm
-      v-show="steps === 3"
-      @handleBackStep="handleBackStep"
-      @handleNextStep="handleNextStep"
-    />
-
-    <ReviewForm
-      v-show="steps === 4"
-      :entity="entity"
-      :registrationData="registrationData"
-      @handleBackStep="handleBackStep"
-      @handleNextStep="handleNextStep"
-    />
+    <div v-for="(FORM, index) in FORMS_STRUCTURE" class="step">
+      <Form
+        v-show="steps === index + 1"
+        :formStructure="FORM(formSubmit)"
+        @handleBackStep="handleBackStep"
+        @handleNextStep="handleNextStep"
+      ></Form>
+    </div>
+    <div class="step-review">
+      <Form
+        v-show="steps === maxSteps"
+        :formStructure="formReview"
+        @handleBackStep="handleBackStep"
+        @handleNextStep="handleSubmitForm"
+      ></Form>
+    </div>
   </form>
 </template>
 

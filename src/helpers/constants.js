@@ -9,7 +9,7 @@ export const FIELDS_NAME = {
   },
   cnpj: {
     name: "Razão social",
-    document: "CPF",
+    document: "CNPJ",
     birthDate: "Data de abertura",
     phone: "Telefone",
   },
@@ -26,7 +26,8 @@ export const ERRORS_MESSAGE = {
   email: "E-mail inválido",
   cpf: "CPF inválido",
   cnpj: "CNPJ inválido",
-  password: "Senha fraca",
+  password: "Senha deve contar texto, número e carácter especial",
+  passwordLenght: "Senha deve conter pelo menos 8 caracteres",
   birthDate: "Data inválida",
   phone: "Telefone inválido",
 };
