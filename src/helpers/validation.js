@@ -8,19 +8,19 @@ export const isValidEmail = (email) => {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (email === "") {
-    return false;
+    return true;
   } else if (!emailPattern.test(email)) {
-    return false;
+    return true;
   }
 
-  return true;
+  return false;
 };
 
 export const isValidCPF = (cpf) => {
   const cpfValue = cpf.replace(/[^\d]/g, "");
 
   if (cpfValue.length !== 11) {
-    return false;
+    return true;
   }
 
   let sum = 0;
@@ -33,7 +33,7 @@ export const isValidCPF = (cpf) => {
 
   if (remainder === 10 || remainder === 11) remainder = 0;
   if (remainder !== parseInt(cpfValue.substring(9, 10))) {
-    return false;
+    return true;
   }
 
   sum = 0;
@@ -44,21 +44,21 @@ export const isValidCPF = (cpf) => {
 
   if (remainder === 10 || remainder === 11) remainder = 0;
   if (remainder !== parseInt(cpfValue.substring(10, 11))) {
-    return false;
+    return true;
   }
 
-  return true;
+  return false;
 };
 
 export const isValidCNPJ = (cnpj) => {
   const cnpjValue = cnpj.replace(/[^\d]/g, "");
 
   if (cnpjValue.length !== 14) {
-    return false;
+    return true;
   }
 
   if (INVALID_CNPJS.includes(cnpjValue)) {
-    return false;
+    return true;
   }
 
   let length = cnpjValue.length - 2;
@@ -74,7 +74,7 @@ export const isValidCNPJ = (cnpj) => {
 
   let result = sum % 11 < 2 ? 0 : 11 - (sum % 11);
   if (result !== parseInt(digits.charAt(0))) {
-    return false;
+    return true;
   }
 
   length += 1;
@@ -89,10 +89,10 @@ export const isValidCNPJ = (cnpj) => {
 
   result = sum % 11 < 2 ? 0 : 11 - (sum % 11);
   if (result !== parseInt(digits.charAt(1))) {
-    return false;
+    return true;
   }
 
-  return true;
+  return false;
 };
 
 export const isValidDate = (dateString) => {
@@ -104,12 +104,24 @@ export const isValidDate = (dateString) => {
     return false;
   }
 
-  return date >= year1900 && date < today;
+  return !(date >= year1900 && date < today);
 };
 
 export const isValidPhoneNumber = (phone) => {
   const cleaned = phone.replace(/[^\d]/g, "");
   const isValid = /^(\d{10}|\d{11})$/.test(cleaned);
 
-  return isValid;
+  return !isValid;
+};
+
+export const isValidPassword = (password) => {
+  const hasText = /[a-zA-Z]/.test(password);
+  const hasNumber = /\d/.test(password);
+  const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+  return !(hasText && hasNumber && hasSpecialChar);
+};
+
+export const isValidMinLength = (str, minLength = 8) => {
+  return str.length < minLength;
 };
