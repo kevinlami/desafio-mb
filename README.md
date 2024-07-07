@@ -49,10 +49,10 @@ build-and-serve
 
 ## Data structure
 
-The data structure is used to assemble the form, it is located in the path: "\src\helpers\formStructure.js"
+The data structure is used to assemble the form, it is located in the path: `\src\helpers\formStructure.js`
 
-The const FORMS_STRUCTURE is used to create the form dynamically.
-FORMS_STRUCTURE is a list of functions that return an object. It was chosen to be a function because each function receives the data from the previous steps.
+The const `FORMS_STRUCTURE` is used to create the form `dynamically`.
+`FORMS_STRUCTURE` is a list of functions that return an object. It was chosen to be a function because each function receives the data from the previous steps.
 
 ```bash
 //Structure of the list used to create de form:
