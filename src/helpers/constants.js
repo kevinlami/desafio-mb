@@ -16,9 +16,11 @@ export const FIELDS_NAME = {
 };
 
 export const FORM_TITLE = {
-  review: "Revise suas informações",
+  entity: "Seja bem vindo(a)",
   cpf: "Pessoa Física",
   cnpj: "Pessoa jurídica",
+  password: "Senha de acesso",
+  review: "Revise suas informações",
 };
 
 export const ERRORS_MESSAGE = {

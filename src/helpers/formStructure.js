@@ -8,7 +8,11 @@ import {
   isValidPassword,
   isValidMinLength,
 } from "@/helpers/validation.js";
-import { ERRORS_MESSAGE, FIELDS_NAME } from "@/helpers/constants.js";
+import {
+  ERRORS_MESSAGE,
+  FIELDS_NAME,
+  FORM_TITLE,
+} from "@/helpers/constants.js";
 
 /*
 The const FORMS_STRUCTURE is used to create the form dynamically.
@@ -48,7 +52,7 @@ Structure of the object returned by the function:
 export const FORMS_STRUCTURE = [
   (formSubmit) => {
     return {
-      title: "Seja bem vindo(a)",
+      title: FORM_TITLE.entity,
       formFields: [
         {
           type: "text",
@@ -87,13 +91,13 @@ export const FORMS_STRUCTURE = [
     };
   },
   (formSubmit) => {
+    let title = FORM_TITLE.cpf;
     let fieldsNameEntity = FIELDS_NAME.cpf;
     let errorMessageEntity = ERRORS_MESSAGE.cpf;
     let documentValidation = isValidCPF;
-    let title = "Pessoa Física";
 
     if (formSubmit.document === "cnpj") {
-      title = "Pessoa Jurídica";
+      title = FORM_TITLE.cnpj;
       fieldsNameEntity = FIELDS_NAME.cnpj;
       errorMessageEntity = ERRORS_MESSAGE.cnpj;
       documentValidation = isValidCNPJ;
@@ -152,7 +156,7 @@ export const FORMS_STRUCTURE = [
   },
   (formSubmit) => {
     return {
-      title: "Senha de acesso",
+      title: FORM_TITLE.password,
       formFields: [
         {
           id: "password",
