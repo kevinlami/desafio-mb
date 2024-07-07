@@ -63,11 +63,11 @@ export const FORMS_STRUCTURE = [
             },
           ],
           showError: "",
-          value: "",
+          value: formSubmit.email,
         },
         {
           type: "radio",
-          id: "document",
+          id: "documentType",
           review: false,
           options: [
             {
@@ -81,7 +81,7 @@ export const FORMS_STRUCTURE = [
           ],
           errors: [{ message: ERRORS_MESSAGE.required, callback: isRequired }],
           showError: "",
-          value: "",
+          value: formSubmit.documentType,
         },
       ],
     };
@@ -109,7 +109,7 @@ export const FORMS_STRUCTURE = [
           fieldTitle: fieldsNameEntity.name,
           errors: [{ message: ERRORS_MESSAGE.required, callback: isRequired }],
           showError: "",
-          value: "",
+          value: formSubmit.name,
         },
         {
           type: "text",
@@ -121,7 +121,7 @@ export const FORMS_STRUCTURE = [
             { message: errorMessageEntity, callback: documentValidation },
           ],
           showError: "",
-          value: "",
+          value: formSubmit.document,
         },
         {
           type: "date",
@@ -133,7 +133,7 @@ export const FORMS_STRUCTURE = [
             { message: ERRORS_MESSAGE.birthDate, callback: isValidDate },
           ],
           showError: "",
-          value: "",
+          value: formSubmit.birthDate,
         },
         {
           type: "text",
@@ -145,7 +145,7 @@ export const FORMS_STRUCTURE = [
             { message: ERRORS_MESSAGE.phone, callback: isValidPhoneNumber },
           ],
           showError: "",
-          value: "",
+          value: formSubmit.phone,
         },
       ],
     };
@@ -168,7 +168,7 @@ export const FORMS_STRUCTURE = [
             { message: ERRORS_MESSAGE.password, callback: isValidPassword },
           ],
           showError: "",
-          value: "",
+          value: formSubmit.password,
         },
       ],
     };

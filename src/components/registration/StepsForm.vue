@@ -21,7 +21,15 @@ const handleNextStep = (formData) => {
     formData?.formFields.forEach((element) => {
       formSubmit[element.id] = element.value;
       if (element.review) {
-        formReview.formFields.push(element);
+        const existingIndex = formReview.formFields.findIndex((field) => {
+          return field.id === element.id;
+        });
+
+        if (existingIndex !== -1) {
+          formReview.formFields.splice(existingIndex, 1, element);
+        } else {
+          formReview.formFields.push(element);
+        }
       }
     });
   }
@@ -35,7 +43,6 @@ const handleNextStep = (formData) => {
 Used to send the processed form data with ID:value to the registration
 */
 const handleSubmitForm = () => {
-  console.log("formSubmit", formSubmit);
   emit("create:registrationData", {
     ...formSubmit,
   });
