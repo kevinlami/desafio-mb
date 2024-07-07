@@ -44,9 +44,7 @@ const handleNextStep = (formData) => {
 Used to send the processed form data with ID:value to the registration
 */
 const handleSubmitForm = () => {
-  emit("create:registrationData", {
-    ...formSubmit,
-  });
+  emit("create:registrationData", formSubmit);
 };
 
 /*

@@ -13,7 +13,7 @@ const validationForm = async (req, res, next) => {
       if (isRequired(requestData[field])) {
         return res.status(400).json({
           status: "error",
-          message: `Review your fields!`,
+          message: `Revise seu cadastro`,
         });
       }
     });
@@ -23,7 +23,7 @@ const validationForm = async (req, res, next) => {
   } catch (error) {
     return res.status(500).json({
       status: "error",
-      message: "A problem occurred, please try again. Erro: " + error,
+      message: "Ouve um problema, por favor tente outra vez.",
     });
   }
 };

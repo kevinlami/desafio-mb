@@ -1,22 +1,33 @@
 <script setup>
 import StepsForm from "@/components/registration/StepsForm.vue";
+import { defineEmits } from "vue";
+const emit = defineEmits(["message:error", "message:success"]);
 
 const submit = async (event) => {
-  console.log("Event", event);
-  const response = await fetch("/registration", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(event),
-  });
+  try {
+    const response = await fetch("/registration", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(event),
+    });
 
-  const data = await response.json();
+    const result = await response.json();
 
-  if (data.errors) {
-    Object.assign(errors, data.errors);
-    return;
+    console.log("response", response);
+    if (response.status === 404) {
+      emit("message:error", "Ocorreu um problema no sistema!");
+    } else if (response.status === 500) {
+      emit("message:error", result.message || response.statusText);
+    } else if (response.status === 400) {
+      emit("message:error", result.message || response.statusText);
+    } else if (response.status === 200) {
+      emit("message:success", result.message || response.statusText);
+    }
+  } catch (error) {
+    emit("message:error", "Ocorreu um erro na requisição.");
   }
 };
 </script>

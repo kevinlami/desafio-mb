@@ -20,10 +20,9 @@ app.get("/registration/*", (req, res) => {
 });
 
 app.post("/registration", validationForm, (req, res) => {
-  console.log("PASSOU");
   res.status(200).json({
     status: "success",
-    message: "Registration completed successfully",
+    message: "Registro feito com sucesso!",
   });
 });
 
