@@ -95,8 +95,9 @@ export const FORMS_STRUCTURE = [
     let fieldsNameEntity = FIELDS_NAME.cpf;
     let errorMessageEntity = ERRORS_MESSAGE.cpf;
     let documentValidation = isValidCPF;
+    console.log("formSubmit", formSubmit);
 
-    if (formSubmit.document === "cnpj") {
+    if (formSubmit.documentType === "cnpj") {
       title = FORM_TITLE.cnpj;
       fieldsNameEntity = FIELDS_NAME.cnpj;
       errorMessageEntity = ERRORS_MESSAGE.cnpj;

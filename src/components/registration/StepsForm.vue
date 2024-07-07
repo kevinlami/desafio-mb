@@ -1,11 +1,12 @@
 <script setup>
 import { ref, provide, reactive, defineEmits } from "vue";
 import { FORMS_STRUCTURE } from "@/helpers/formStructure.js";
+import { FORM_TITLE } from "@/helpers/constants.js";
 import Form from "@/components/registration/Form.vue";
 const emit = defineEmits(["create:registrationData"]);
 
 const formReview = reactive({
-  title: "Revise suas informações",
+  title: FORM_TITLE.review,
   formFields: [],
 });
 const formSubmit = {};
