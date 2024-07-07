@@ -7,9 +7,12 @@ It has a data structure used to dynamically build the forms.
 
 ## Images
 
-![Imagem do Projeto](./src/assets/registration01.png) ![Imagem do Projeto](./src/assets/registration02.png)
-
-![Imagem do Projeto](./src/assets/registration03.png) ![Imagem do Projeto](./src/assets/registration04.png)
+<p float="left">
+  <img src="./src/assets/registration01.png" width="200" />
+  <img src="./src/assets/registration02.png" width="200" /> 
+  <img src="./src/assets/registration03.png" width="200" />
+  <img src="./src/assets/registration04.png" width="200" />
+</p>
 
 ## Technologies Used
 
