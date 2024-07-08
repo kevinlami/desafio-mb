@@ -16,7 +16,6 @@ const submit = async (event) => {
 
     const result = await response.json();
 
-    console.log("response", response);
     if (response.status === 404) {
       emit("message:error", "Ocorreu um problema no sistema!");
     } else if (response.status === 500) {
@@ -46,5 +45,11 @@ main {
   max-width: $registration-width;
   width: 100%;
   margin: 100px auto 0;
+}
+
+@media only screen and (max-width: 600px) {
+  main {
+    margin: 50px auto 0;
+  }
 }
 </style>

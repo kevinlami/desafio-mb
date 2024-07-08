@@ -66,7 +66,7 @@ const handleNextStep = () => {
 </script>
 
 <template>
-  <div>
+  <div class="step-content">
     <Header :title="formData.title"></Header>
     <div class="form">
       <div class="form-element" v-for="field in formData.formFields">
@@ -107,17 +107,23 @@ const handleNextStep = () => {
 </template>
 
 <style scoped lang="scss">
-.form {
-  max-width: $form-width;
+.step-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  .radio-input {
-    @include error;
-    display: flex;
-    flex-direction: column;
+  .form {
+    width: 100%;
 
-    .radio-content {
+    .radio-input {
+      @include error;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+
+      .radio-content {
+        display: flex;
+        justify-content: space-between;
+      }
     }
   }
 }

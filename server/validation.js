@@ -4,11 +4,7 @@ function isRequired(field) {
 
 const validationForm = async (req, res, next) => {
   try {
-    console.log(req.body);
     const requestData = req.body;
-    const { documentType, mail, name, document, birthDate, phone, password } =
-      requestData;
-
     Object.keys(requestData).forEach((field) => {
       if (isRequired(requestData[field])) {
         return res.status(400).json({

@@ -54,7 +54,7 @@ const handleChange = (event) => {
 
   input {
     border-radius: 5px;
-    padding: 5px 0;
+    padding: 5px;
     font-size: 0.9em;
     border: 1px solid #000;
   }
@@ -66,6 +66,7 @@ const handleChange = (event) => {
 
   &.radio {
     flex-direction: row;
+    align-items: center;
 
     .title {
       order: 2;

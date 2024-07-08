@@ -22,6 +22,8 @@ const maxSteps = inject("maxSteps");
 
 <style scoped lang="scss">
 .registration-header {
+  width: 100%;
+  white-space: nowrap;
   margin-bottom: 30px;
 
   h3 {

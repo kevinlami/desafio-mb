@@ -37,7 +37,7 @@ const handleNextStep = () => {
 .actions {
   display: flex;
   gap: 20px;
-  max-width: $form-width;
+  width: 100%;
 
   .bt-back {
     flex: 1;
